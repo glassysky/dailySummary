@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<!-- <script type="text/javascript" src="http://remoteserver.com/remote.js"></script> -->
+<script type="text/javascript">
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
+				alert(xhr.responseText);
+			} else {
+				alert("Request was unsuccessful:" + xhr.status);
+			}
+		}
+	}
+
+	xhr.open("get", "./test.json", false);
+	// xhr.send("data");
+</script>
+<script type="text/javascript">
+	function handleResponse(response){
+		alert(response.ip);
+	}
+
+	var script = document.createElement("script");
+	script.src = "http://freegeoip.net/json/?callback=handleResponse";
+	document.body.insertBefore(script, document.body.firstChild);
+
+</script>
+</html>
