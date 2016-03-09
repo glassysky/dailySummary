@@ -31,6 +31,27 @@
 	}
 
 	// normalInherit();
+
+	function combInheritate(){
+		function Parent(age){
+			this.name = ['mike', 'jack', 'smith'];
+			this.age = age;
+		}
+
+		Parent.prototype.run = function(){
+			return this.name + ' are both' + this.age;
+		};
+
+		function Child(age){
+			Parent.call(this, age);
+		}
+
+		Child.prototype = new Parent();
+
+		var test = new Child(21);
+		console.log(test.run());
+
+	}
 	
 	</script>
 
